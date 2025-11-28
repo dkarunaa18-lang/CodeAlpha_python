@@ -1,0 +1,36 @@
+# Task 2: Stock Portfolio Tracker
+stock_prices = {"AAPL": 180, "TSLA": 250, "GOOG": 130, "AMZN": 145}
+print("=== Stock Portfolio Tracker ===")
+print("Available stocks and prices:")
+for stock, price in stock_prices.items():
+    print(f"{stock}: ${price}")
+portfolio = {}
+total = 0
+while True:
+    stock = input("\nEnter stock symbol (or 'done' to finish): ").upper()
+    if stock == "DONE":
+        break
+    if stock not in stock_prices:
+        print("Invalid stock symbol. Try again.")
+        continue
+    quantity = input(f"Enter quantity of {stock}: ")
+    if not quantity.isdigit():
+        print("Please enter a valid number.")
+        continue
+    quantity = int(quantity)
+    portfolio[stock] = quantity
+print("\nYour Portfolio:")
+for stock, qty in portfolio.items():
+    value = stock_prices[stock] * qty
+    total += value
+    print(f"{stock}: {qty} × ${stock_prices[stock]} = ${value}")
+
+print(f"\nTotal Investment Value: ${total}")
+save = input("\nSave portfolio to a file? (y/n): ").lower()
+if save == "y":
+    with open("portfolio.txt", "w") as file:
+        for stock, qty in portfolio.items():
+            file.write(f"{stock}: {qty} × ${stock_prices[stock]} = ${stock_prices[stock] * qty}\n")
+        file.write(f"\nTotal Investment Value: ${total}")
+    print("Portfolio saved to 'portfolio.txt'.")
+print("\nThank you for using the tracker!")
