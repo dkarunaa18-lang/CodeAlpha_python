@@ -1,0 +1,17 @@
+#Task3
+def chatbot():
+    print("Chatbot: Hello! Type 'bye' to exit.\n")
+    while True:
+        user_input = input("You: ").lower().strip()
+        if user_input in ["hello", "hi","hey"]:
+            print("Chatbot: Hi there!")
+        elif user_input in ["how are you", "how r u"]:
+            print("Chatbot: I'm doing great, thanks for asking!")
+        elif user_input in ["what is your name", "who are you"]:
+            print("Chatbot: I'm a simple Python chatbot made by you!")
+        elif user_input in ["bye", "exit"]:
+            print("Chatbot: Goodbye! Have a nice day 😊")
+            break
+        else:
+            print("Chatbot: Sorry, I don't understand that yet.")
+chatbot()
